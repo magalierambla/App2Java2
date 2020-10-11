@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS project (
   statut_project VARCHAR(45) NULL,
   porte_project_id INT NULL,
   project_category_id INT NULL,
+  nom VARCHAR(100),
   PRIMARY KEY (id),
   CONSTRAINT fk_project_porte_project
     FOREIGN KEY (porte_project_id)
