@@ -13,8 +13,8 @@ import javax.persistence.OneToOne;
 
 
 @Entity
-@Table(name = "question_rep_project_by_user_for_user")
-public class  QuestionRepProjectByUserForUserModel implements Serializable{
+@Table(name = "comments_project")
+public class CommentProject implements Serializable{
 
 
 
@@ -23,7 +23,7 @@ public class  QuestionRepProjectByUserForUserModel implements Serializable{
     private Long id;
 
     @Column(nullable = false)
-    private String bodyAide;
+    private String bodyComment;
 
     @Column(nullable = false)
     private String dateCreated;
@@ -36,82 +36,62 @@ public class  QuestionRepProjectByUserForUserModel implements Serializable{
     private Project _project ;
 
     @OneToOne
-    @JoinColumn(name = "token_user_exp", referencedColumnName = "token")
-    private User _userExp;
+    @JoinColumn(name = "token_user", referencedColumnName = "token")
+    private User _user;
 
+	public User get_user() {
+		return _user;
+	}
 
-	@OneToOne
-    @JoinColumn(name = "token_user_dest", referencedColumnName = "token")
-    private User _userDest;
-
+	public void set_user(User _user) {
+		this._user = _user;
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-	public String getBodyAide() {
-		return bodyAide;
+	public String getBodyComment() {
+		return bodyComment;
 	}
 
-
-	public void setBodyAide(String bodyAide) {
-		this.bodyAide = bodyAide;
+	public void setBodyComment(String bodyComment) {
+		this.bodyComment = bodyComment;
 	}
-
 
 	public String getDateCreated() {
 		return dateCreated;
 	}
 
-
 	public void setDateCreated(String dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-
 
 	public Long getTimestamp() {
 		return timestamp;
 	}
 
-
 	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
 	}
-
 
 	public Project get_project() {
 		return _project;
 	}
 
-
 	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
-
-	public User get_userExp() {
-		return _userExp;
-	}
-
-
-	public void set_userExp(User _userExp) {
-		this._userExp = _userExp;
-	}
-
-
-	public User get_userDest() {
-		return _userDest;
-	}
-
-
-	public void set_userDest(User _userDest) {
-		this._userDest = _userDest;
+	@Override
+	public String toString() {
+		return "commentProject [id=" + id + ", bodyComment=" + bodyComment + ", dateCreated=" + dateCreated
+				+ ", timestamp=" + timestamp + ", _project=" + _project + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 

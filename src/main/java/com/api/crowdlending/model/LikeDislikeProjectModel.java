@@ -1,11 +1,14 @@
 package com.api.crowdlending.model;
 
+
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,29 +18,24 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.api.crowdlending.enumapp.likeDislikeProject;
+
 
 import javax.persistence.OneToOne;
 
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "list_news_project")
-public class newsProjectModel implements Serializable{
+@Table(name = "like_dislike_project_user")
+public class LikeDislikeProjectModel implements Serializable{
 
-    @Id
+
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
-    private String titre;
-
-    @Column(nullable = false)
-    private String description;
-
-    @Column(nullable = true)
-    private String photos;
 
     @Column(nullable = false)
     private String date_created;
@@ -53,14 +51,16 @@ public class newsProjectModel implements Serializable{
     @CreatedDate
     private Date created_at;
 
-    @Column(nullable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date update_at;
+    @Enumerated(EnumType.STRING)
+    private likeDislikeProject  statut_like_project;
 
     @OneToOne
-    @JoinColumn(name = "token_project", referencedColumnName = "token")
+    @JoinColumn(name = "token_project", referencedColumnName = "token", nullable = false)
     private Project _project ;
+
+    @OneToOne
+    @JoinColumn(name = "token_user", referencedColumnName = "token", nullable = false)
+    private User _user;
 
 	public Long getId() {
 		return id;
@@ -68,30 +68,6 @@ public class newsProjectModel implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getTitre() {
-		return titre;
-	}
-
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getPhotos() {
-		return photos;
-	}
-
-	public void setPhotos(String photos) {
-		this.photos = photos;
 	}
 
 	public String getDate_created() {
@@ -118,22 +94,6 @@ public class newsProjectModel implements Serializable{
 		this.timestamp = timestamp;
 	}
 
-	public Date getCreated_at() {
-		return created_at;
-	}
-
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-
-	public Date getUpdate_at() {
-		return update_at;
-	}
-
-	public void setUpdate_at(Date update_at) {
-		this.update_at = update_at;
-	}
-
 	public Project get_project() {
 		return _project;
 	}
@@ -142,7 +102,35 @@ public class newsProjectModel implements Serializable{
 		this._project = _project;
 	}
 
+	public User get_user() {
+		return _user;
+	}
 
+	public void set_user(User _user) {
+		this._user = _user;
+	}
+
+	public likeDislikeProject getStatut_like_project() {
+		return statut_like_project;
+	}
+
+	public void setStatut_like_project(likeDislikeProject statut_like_project) {
+		this.statut_like_project = statut_like_project;
+	}
+
+	public Date getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+
+	@Override
+	public String toString() {
+		return "heartProjectModel [id=" + id + ", date_created=" + date_created + ", timestamp=" + timestamp
+				+ ", _project=" + _project + ", _user=" + _user + "]";
+	}
 
 
 

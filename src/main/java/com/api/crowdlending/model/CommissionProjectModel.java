@@ -13,37 +13,34 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.OneToOne;
 
 
 @Entity
+@Table(name = "list_commission_project",uniqueConstraints={@UniqueConstraint(columnNames ={"token"})})
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "list_news_project")
-public class newsProjectModel implements Serializable{
+public class CommissionProjectModel implements Serializable{
 
-    @Id
+
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String titre;
+    private Long amount;
 
     @Column(nullable = false)
-    private String description;
+    private String token;
 
-    @Column(nullable = true)
-    private String photos;
 
-    @Column(nullable = false)
+	@Column(nullable = false)
     private String date_created;
-
-    @Column(nullable = true)
-    private String date_update;
 
     @Column(nullable = false)
     private Long timestamp;
@@ -53,98 +50,98 @@ public class newsProjectModel implements Serializable{
     @CreatedDate
     private Date created_at;
 
-    @Column(nullable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date update_at;
-
-    @OneToOne
+	@OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token")
     private Project _project ;
 
-	public Long getId() {
+    @OneToOne
+    @JoinColumn(name = "token_manager", referencedColumnName = "token")
+    private Adminstrateur manager_project ;
+
+    public Long getId() {
 		return id;
 	}
+
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getTitre() {
-		return titre;
+
+	public Long getAmount() {
+		return amount;
 	}
 
-	public void setTitre(String titre) {
-		this.titre = titre;
+
+	public void setAmount(Long amount) {
+		this.amount = amount;
 	}
 
-	public String getDescription() {
-		return description;
+
+	public String getToken() {
+		return token;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
-	public String getPhotos() {
-		return photos;
-	}
 
-	public void setPhotos(String photos) {
-		this.photos = photos;
-	}
+
+
 
 	public String getDate_created() {
 		return date_created;
 	}
 
+
 	public void setDate_created(String date_created) {
 		this.date_created = date_created;
 	}
 
-	public String getDate_update() {
-		return date_update;
-	}
-
-	public void setDate_update(String date_update) {
-		this.date_update = date_update;
-	}
 
 	public Long getTimestamp() {
 		return timestamp;
 	}
 
+
 	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
 	}
+
 
 	public Date getCreated_at() {
 		return created_at;
 	}
 
+
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
 
-	public Date getUpdate_at() {
-		return update_at;
-	}
-
-	public void setUpdate_at(Date update_at) {
-		this.update_at = update_at;
-	}
 
 	public Project get_project() {
 		return _project;
 	}
+
 
 	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
 
+	public Adminstrateur getManager_project() {
+		return manager_project;
+	}
+
+
+	public void setManager_project(Adminstrateur manager_project) {
+		this.manager_project = manager_project;
+	}
 
 
 
 
 }
+
