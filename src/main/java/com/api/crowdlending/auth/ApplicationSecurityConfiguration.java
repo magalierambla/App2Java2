@@ -46,7 +46,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .authorizeRequests()
                 .antMatchers("/", "/api/users/create",
                         "/assets/i18n/fr-FR.json", "/api/visitor/projects",
-                        "/api/project/**",
+                        "/api/project/**", "/api/admin/**",
                         "/api/users/**")
                 .permitAll()
                 .anyRequest()
