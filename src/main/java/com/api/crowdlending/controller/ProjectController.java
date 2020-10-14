@@ -21,7 +21,6 @@ import com.api.crowdlending.functionsUtils.*;
 import java.time.LocalDateTime; // Import the LocalDateTime class
 import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class ProjectController {

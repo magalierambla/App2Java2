@@ -1,17 +1,22 @@
 package com.api.crowdlending.integration.webrequest;
 
+import com.api.crowdlending.model.User;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
-@RunWith(SpringRunner.class)
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UsersHttpTest {
     @LocalServerPort
@@ -22,12 +27,6 @@ public class UsersHttpTest {
     @BeforeAll
     static void init() {
         restTemplate = new RestTemplate();
-        restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
-            @Override
-            public boolean hasError(HttpStatus statusCode) {
-                return false;
-            }
-        });
     }
     @BeforeEach
     void setUp(){
@@ -37,11 +36,12 @@ public class UsersHttpTest {
 
     @Test
     void shouldReturnAListOfUsers(){
-        Object users = restTemplate.getForObject(baseUrl, Object.class);
-        System.out.println(users);
-//        assertAll(
-//                () -> assertNotNull(users),
-//                () -> assertTrue(users.length == 2)
-//        );
+        Map users = restTemplate.getForObject(baseUrl, Map.class);
+        Map usersMap = (Map) users.get("_embedded");
+        List<User> users3 = (List) usersMap.get("users");
+        Assertions.assertAll(
+                () -> assertNotNull(users3),
+                () -> assertTrue(users3.size() == 2)
+        );
     }
 }

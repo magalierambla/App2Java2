@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.api.crowdlending.model.User;
@@ -26,7 +27,7 @@ import com.api.crowdlending.functionsUtils.*;
 
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -36,6 +37,8 @@ public class UserController {
 
     @Autowired
 	ContactVisitorRepository _contactVisitorRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 
 
@@ -71,12 +74,7 @@ public class UserController {
    @PostMapping(value = "/users/create")
    @ResponseBody
    public User createUser(@RequestBody User newUser) throws NoSuchAlgorithmException {
-
-
-
 	    String  newToken = MethodesUtils.generateAlphanumericStringToken();
-
-
 	    User userBdd = new User();
 
 	    userBdd.setDateNaissance(newUser.getDateNaissance());
@@ -91,7 +89,7 @@ public class UserController {
 
 	    userBdd.setLogin(newUser.getLogin());
 
-	    userBdd.setPassword(MethodesUtils.getMD5Hex(newUser.getPassword()));
+	    userBdd.setPassword(passwordEncoder.encode(newUser.getPassword()));
 
 	    userBdd.setToken(newToken);
 
