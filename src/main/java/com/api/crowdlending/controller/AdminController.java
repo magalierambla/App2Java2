@@ -26,7 +26,7 @@ import com.api.crowdlending.repository.ProjectRepository;
 import com.api.crowdlending.repository.UserRepository;
 import com.api.crowdlending.functionsUtils.*;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://ec2-18-218-20-84.us-east-2.compute.amazonaws.com:4200")
 @RestController
 @RequestMapping("/api")
 public class AdminController {
