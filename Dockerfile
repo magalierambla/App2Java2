@@ -3,5 +3,6 @@ WORKDIR /
 COPY . .
 RUN mvn clean install -DskipTests
 RUN ls -l ./target
-COPY ./target/Api-crowdlending-1.0.0.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+RUN cp ./target/Api-crowdlending-1.0.0.jar .
+RUN ls -l
+ENTRYPOINT ["java","-jar","./Api-crowdlending-1.0.0.jar"]
