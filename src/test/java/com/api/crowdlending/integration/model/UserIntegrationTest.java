@@ -71,17 +71,17 @@ public class UserIntegrationTest {
 
     }
 
-    @Test
-    public void shouldDisplayMagalieRAMBLAWhenFindByNomAndPrenom() {
-        User userToSave = new User();
-        userToSave.setId(1L);
-        userToSave.setNom("RAMBLA");
-        userToSave.setPrenom("Magalie");
-        this.userRepository.save(userToSave);
-        Optional<User> foundUser = this.userRepository.findByNomAndPrenom("RAMBLA", "Magalie");
-
-        assertThat(userToSave.getNom()).isEqualTo(foundUser.get().getNom());
-        assertThat(userToSave.getPrenom()).isEqualTo(foundUser.get().getPrenom());
-
-    }
+//    @Test
+//    public void shouldDisplayMagalieRAMBLAWhenFindByNomAndPrenom() {
+//        User userToSave = new User();
+//        userToSave.setId(1L);
+//        userToSave.setNom("RAMBLA");
+//        userToSave.setPrenom("Magalie");
+//        this.userRepository.save(userToSave);
+//        Optional<User> foundUser = this.userRepository.findByNomAndPrenom("RAMBLA", "Magalie");
+//
+//        assertThat(userToSave.getNom()).isEqualTo(foundUser.get().getNom());
+//        assertThat(userToSave.getPrenom()).isEqualTo(foundUser.get().getPrenom());
+//
+//    }
 }

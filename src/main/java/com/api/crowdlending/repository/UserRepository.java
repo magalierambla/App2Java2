@@ -39,7 +39,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     int countNbrUsersForLast4Year();
 
 
-    Optional<User> findByNomAndPrenom(String rambla, String magalie);
+    //Optional<User> findByNomAndPrenom(String rambla, String magalie);
 
-    Optional<User> findByLogin(String login);
+    //Optional<User> findByLogin(String login);
 }

@@ -10,7 +10,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.api.crowdlending.model.User;
@@ -37,8 +36,8 @@ public class UserController {
 
     @Autowired
 	ContactVisitorRepository _contactVisitorRepository;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	//@Autowired
+	//private PasswordEncoder passwordEncoder;
 
 
 
@@ -89,7 +88,8 @@ public class UserController {
 
 	    userBdd.setLogin(newUser.getLogin());
 
-	    userBdd.setPassword(passwordEncoder.encode(newUser.getPassword()));
+	    //userBdd.setPassword(passwordEncoder.encode(newUser.getPassword()));
+	    userBdd.setPassword(newUser.getPassword());
 
 	    userBdd.setToken(newToken);
 
