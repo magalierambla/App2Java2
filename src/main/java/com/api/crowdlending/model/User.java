@@ -58,6 +58,7 @@ public class User implements Serializable{
 	private String photoUser;
     @Temporal(TemporalType.DATE)
     private Date date_naissance;
+	@Column
     private String token;
 
     public Long getId() {

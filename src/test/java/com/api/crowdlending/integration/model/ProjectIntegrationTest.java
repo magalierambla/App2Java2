@@ -1,13 +1,18 @@
 package com.api.crowdlending.integration.model;
 
+import com.api.crowdlending.ApiCrowdlendingApplication;
 import com.api.crowdlending.model.Project;
 import com.api.crowdlending.repository.ProjectRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -17,14 +22,19 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.springframework.boot.test.context.SpringBootTest.*;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest(
+        classes = ApiCrowdlendingApplication.class)
+@AutoConfigureMockMvc
+
+@EnableConfigurationProperties
 public class ProjectIntegrationTest {
     @Autowired
     private ProjectRepository projectRepository;
-    @Autowired
-    private TestEntityManager testEntityManager;
+ /*   @Autowired
+    private TestEntityManager testEntityManager;*/
 
     private List<Project> expectedProjects = new ArrayList<>();
 
