@@ -115,7 +115,8 @@ public class UserController {
 
  	    System.out.println("infosUser.password="+ infosUser.getPassword());
 
- 	    String passwordMd5 = MethodesUtils.getMD5Hex(infosUser.getPassword());
+ 	    //String passwordMd5 = MethodesUtils.getMD5Hex(infosUser.getPassword());
+ 	    String passwordMd5 = infosUser.getPassword();
 
         return ResponseEntity.ok(userRepository.getUserByEmailAndPassword(infosUser.getLogin(),passwordMd5));
 
