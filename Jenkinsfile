@@ -1,12 +1,11 @@
 pipeline{
 
   stages {
-    stage('first stage'){
+    stage('git checkout'){
       steps{
-        sh 'hello world'
-        sh 'docker ps'
-        sh 'pwd'
-        sh 'ls -l'
+        deleteDir()
+        sh 'git clone https://github.com/magalierambla/App2Java2.git'
+        sh 'git checkout master'
       }
     }
   }
