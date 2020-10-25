@@ -5,7 +5,9 @@ agent any
     stage('first step'){
       steps{
         sh 'docker ps'
-        sh 'pwd'
+        sh 'docker images'
+        sh 'docker build -t app2java2 .'
+        sh 'docker images'
       }
     }
   }
