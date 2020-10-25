@@ -2,11 +2,9 @@ pipeline{
 agent any
 
   stages {
-    stage('git checkout'){
+    stage('first step'){
       steps{
-        deleteDir()
-        sh 'git clone https://github.com/magalierambla/App2Java2.git'
-        sh 'git checkout master'
+        sh 'docker ps'
       }
     }
   }
