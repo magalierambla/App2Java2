@@ -5,6 +5,7 @@ agent any
     stage('first step'){
       steps{
         sh 'docker ps'
+        sh 'pwd'
       }
     }
   }
