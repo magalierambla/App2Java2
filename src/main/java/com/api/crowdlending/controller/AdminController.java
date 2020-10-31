@@ -26,7 +26,7 @@ import com.api.crowdlending.repository.ProjectRepository;
 import com.api.crowdlending.repository.UserRepository;
 import com.api.crowdlending.functionsUtils.*;
 
-@CrossOrigin(origins = "http://ec2-18-218-20-84.us-east-2.compute.amazonaws.com:4200")
+//@CrossOrigin(origins = "http://ec2-3-137-162-201.us-east-2.compute.amazonaws.com:4200")
 @RestController
 @RequestMapping("/api")
 public class AdminController {
@@ -158,12 +158,13 @@ public class AdminController {
 
  	   try {
 
-			 passwordMd5 = MethodesUtils.getMD5Hex(infosUser.getPassword());
+			 //passwordMd5 = MethodesUtils.getMD5Hex(infosUser.getPassword());
+			 passwordMd5 = infosUser.getPassword();
 
 			 return ResponseEntity.ok(adminRepository.getUserByEmailAndPassword(infosUser.getLogin(),passwordMd5));
 
 
-		} catch (NoSuchAlgorithmException e) {
+		} catch (Exception e) {
 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
