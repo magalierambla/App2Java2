@@ -15,7 +15,7 @@ pipeline {
                  branches: [[name: 'master']],
                  userRemoteConfigs: [[
                     url: 'git@github.com:wshihadeh/magalierambla/App2Java2.git',
-                    credentialsId: '',
+                    credentialsId: 'jenkins-webhook-id',
                  ]]
                 ])
             }
