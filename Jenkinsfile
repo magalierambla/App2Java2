@@ -1,12 +1,36 @@
-pipeline{
-agent any
-
-  stages {
-    stage('first step'){
-      steps{
-        sh 'pwd'
-        sh 'ls -l'
-      }
+properties([pipelineTriggers([githubPush()])])
+ 
+pipeline {
+    /* specify nodes for executing */
+    agent {
+        label 'github-ci'
     }
-  }
+ 
+    stages {
+        /* checkout repo */
+        stage('Checkout SCM') {
+            steps {
+                checkout([
+                 $class: 'GitSCM',
+                 branches: [[name: 'master']],
+                 userRemoteConfigs: [[
+                    url: 'git@github.com:wshihadeh/magalierambla/App2Java2.git',
+                    credentialsId: '',
+                 ]]
+                ])
+            }
+        }
+         stage('Do the deployment') {
+            steps {
+                echo ">> Run deploy applications "
+            }
+        }
+    }
+ 
+    /* Cleanup workspace */
+    post {
+       always {
+           deleteDir()
+       }
+   }
 }
