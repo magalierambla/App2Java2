@@ -4,16 +4,15 @@ pipeline {
     agent any
  
     stages {
-        /* checkout repo */
-        stage('Build image') {
+     
+        stage('Take down front-end and api') {
             steps {
-             sh 'ls -l'
-               sh 'docker images'
+             sh 'docker-compose down'
             }
         }
-         stage('Stage 2') {
+         stage('Run Api service and Frontend application') {
             steps {
-               sh 'pwd'
+               sh 'docker-compose up --build -d'
             }
         }
     }
