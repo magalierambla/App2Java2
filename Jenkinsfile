@@ -7,7 +7,6 @@ agent any
         sh 'docker ps'
         sh 'docker images'
         sh 'pwd'
-        sh 'ls -l'
       }
     }
   }
