@@ -7,7 +7,7 @@ pipeline {
         /* checkout repo */
         stage('Stage 1') {
             steps {
-               sh 'ls -l'
+               sh 'docker images'
             }
         }
          stage('Stage 2') {
