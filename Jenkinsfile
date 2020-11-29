@@ -6,7 +6,6 @@ agent any
       steps{
         sh 'pwd'
         sh 'ls -l'
-        sh 'ls'
       }
     }
   }
