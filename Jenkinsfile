@@ -5,8 +5,9 @@ pipeline {
  
     stages {
         /* checkout repo */
-        stage('Stage 1') {
+        stage('Build image') {
             steps {
+             sh 'ls -l'
                sh 'docker images'
             }
         }
