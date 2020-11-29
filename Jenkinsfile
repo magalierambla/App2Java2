@@ -1,34 +1,19 @@
 properties([pipelineTriggers([githubPush()])])
  
 pipeline {
-    /* specify nodes for executing */
     agent any
  
     stages {
         /* checkout repo */
-        stage('Checkout SCM') {
+        stage('Stage 1') {
             steps {
-                checkout([
-                 $class: 'GitSCM',
-                 branches: [[name: 'master']],
-                 userRemoteConfigs: [[
-                    url: 'git@github.com:wshihadeh/magalierambla/App2Java2.git',
-                    credentialsId: 'jenkins-webhook-id',
-                 ]]
-                ])
+               sh 'ls -l'
             }
         }
-         stage('Do the deployment') {
+         stage('Stage 2') {
             steps {
-                echo ">> Run deploy applications     "
+               sh 'pwd'
             }
         }
     }
- 
-    /* Cleanup workspace */
-    post {
-       always {
-           deleteDir()
-       }
-   }
 }
