@@ -1,7 +1,9 @@
 properties([pipelineTriggers([githubPush()])])
  
 pipeline {
-    agent any
+    agent {
+     label 'docker'
+      }
  
     stages {
         /* checkout repo */
