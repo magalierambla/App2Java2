@@ -13,7 +13,8 @@ import com.api.crowdlending.model.MessageModel;
 import com.api.crowdlending.repository.MessageRepository;
 
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://ec2-3-138-196-167.us-east-2.compute.amazonaws.com:4200")
+//@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class MessagerieController {

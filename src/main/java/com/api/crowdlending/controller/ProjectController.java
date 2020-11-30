@@ -21,6 +21,8 @@ import com.api.crowdlending.functionsUtils.*;
 import java.time.LocalDateTime; // Import the LocalDateTime class
 import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
 
+@CrossOrigin(origins = "http://ec2-3-138-196-167.us-east-2.compute.amazonaws.com:4200")
+//@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class ProjectController {

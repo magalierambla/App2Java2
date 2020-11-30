@@ -28,6 +28,7 @@ import com.api.crowdlending.functionsUtils.*;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //ec2-18-218-20-84.us-east-2.compute.amazonaws.com
 //@CrossOrigin(origins = "http://ec2-3-137-162-201.us-east-2.compute.amazonaws.com/:4200")
+@CrossOrigin(origins = "http://ec2-3-138-196-167.us-east-2.compute.amazonaws.com:4200")
 @RestController
 @RequestMapping("/api")
 public class UserController {
